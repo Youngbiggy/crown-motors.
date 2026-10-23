@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151416">
+  <meta name="description" content="Crown Motors : découvrez notre sélection de voitures à vendre. Contactez-nous sur WhatsApp.">
+  <title>Crown Motors | Vente automobile</title>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#accueil" aria-label="Crown Motors, accueil">
+      <span class="brand-mark">♛</span>
+      <span class="brand-text">CROWN<small>MOTORS</small></span>
+    </a>
+
+    <nav class="main-nav">
+      <a href="#accueil">Accueil</a>
+      <a href="#catalogue">Véhicules</a>
+      <a href="#apropos">À propos</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <a class="top-contact" href="https://wa.me/22871215444" target="_blank" rel="noopener">
+      <span>◉</span> +228 71 21 54 44
+    </a>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">VOTRE PARTENAIRE AUTO DE CONFIANCE</p>
+        <h1>Votre prochaine voiture.<br><span>Votre nouvelle histoire.</span></h1>
+        <p class="hero-description">
+          Découvrez notre sélection de véhicules et trouvez celui
+          qui correspond à votre style et à votre budget.
+        </p>
+        <a class="primary-button" href="#catalogue">
+          Découvrir nos véhicules <span>→</span>
+        </a>
+        <div class="hero-points">
+          <span>◆ Une sélection variée</span>
+          <span>◆ Un contact direct</span>
+        </div>
+      </div>
+      <div class="hero-caption">CROWN MOTORS <span>•</span> AUTOMOBILE</div>
+    </section>
+
+    <section class="search-panel" aria-label="Rechercher un véhicule">
+      <label class="search-field">
+        <span>⌕</span>
+        <input id="searchCar" type="search" placeholder="Rechercher une marque, un modèle…">
+      </label>
+
+      <label class="filter-field">
+        <small>Catégorie</small>
+        <select id="filterCategory">
+          <option value="all">Toutes les catégories</option>
+          <option value="Berline">Berline</option>
+          <option value="SUV">SUV</option>
+        </select>
+      </label>
+
+      <label class="filter-field">
+        <small>Prix maximum</small>
+        <select id="filterPrice">
+          <option value="all">Tous les prix</option>
+          <option value="3000000">3 000 000 FCFA</option>
+          <option value="6000000">6 000 000 FCFA</option>
+          <option value="7000000">7 000 000 FCFA</option>
+          <option value="10000000">10 000 000 FCFA</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="catalogue section-wrap" id="catalogue">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">NOTRE SÉLECTION</p>
+          <h2>Nos véhicules <span>en vente</span></h2>
+          <p class="section-subtitle">Trouvez le véhicule qui vous correspond.</p>
+        </div>
+        <p class="result-count" id="resultCount">4 véhicules</p>
+      </div>
+
+      <div class="car-grid" id="carList"></div>
+
+      <div class="empty-message" id="emptyMessage" hidden>
+        <span>⌕</span>
+        <h3>Aucun véhicule trouvé</h3>
+        <p>Essayez de modifier votre recherche ou vos filtres.</p>
+      </div>
+    </section>
+
+    <section class="details-section section-wrap" id="details">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">EN SAVOIR PLUS</p>
+          <h2>Détails du <span>véhicule</span></h2>
+        </div>
+      </div>
+      <div id="carDetails" class="details-panel">
+        <div class="details-placeholder">
+          <span>♛</span>
+          <h3>Choisissez votre prochaine voiture</h3>
+          <p>Sélectionnez un véhicule dans le catalogue pour consulter ses détails.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-band" id="apropos">
+      <div class="about-inner">
+        <div class="about-title">
+          <p class="eyebrow">L'ESPRIT CROWN MOTORS</p>
+          <h2>La route vers<br><span>votre prochain véhicule.</span></h2>
+        </div>
+        <div class="about-item">
+          <span class="about-icon">◇</span>
+          <div><h3>Un choix varié</h3><p>Différents modèles et budgets pour vos besoins.</p></div>
+        </div>
+        <div class="about-item">
+          <span class="about-icon">↗</span>
+          <div><h3>Contact direct</h3><p>Échangez avec nous pour en savoir plus.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-banner" id="contact">
+      <div>
+        <p class="eyebrow">BESOIN D'INFORMATIONS ?</p>
+        <h2>Votre prochaine voiture<br>commence par un message.</h2>
+        <p>Contactez Crown Motors directement sur WhatsApp.</p>
+      </div>
+      <a class="primary-button" href="https://wa.me/22871215444?text=Bonjour%20Crown%20Motors%2C%20je%20souhaite%20avoir%20des%20informations%20sur%20vos%20v%C3%A9hicules." target="_blank" rel="noopener">
+        <span>◉</span> Écrire sur WhatsApp
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <a class="brand" href="#accueil">
+      <span class="brand-mark">♛</span>
+      <span class="brand-text">CROWN<small>MOTORS</small></span>
+    </a>
+    <p>Votre prochain véhicule vous attend.</p>
+    <div class="footer-links">
+      <a href="#accueil">Accueil</a>
+      <a href="#catalogue">Véhicules</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <small>© <span id="currentYear"></span> Crown Motors. Tous droits réservés.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
