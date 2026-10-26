@@ -445,6 +445,436 @@ button, a, select { -webkit-tap-highlight-color: transparent; }
 
 .details-main-image {
   width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #eee;
+}
+
+.thumbnail-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.thumbnail-button {
+  width: 72px;
+  height: 55px;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 7px;
+  background: #eee;
+  cursor: pointer;
+}
+
+.thumbnail-button.active { border-color: var(--burgundy); }
+.thumbnail-button img { width: 100%; height: 100%; object-fit: cover; }
+
+.details-info h3 {
+  margin: 4px 0 8px;
+  font-family: Georgia, serif;
+  font-size: clamp(25px, 3vw, 34px);
+  line-height: 1.2;
+}
+
+.details-price {
+  margin: 0 0 18px;
+  color: var(--burgundy);
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.details-description { color: #625c63; font-size: 13px; }
+
+.specs-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.spec-item {
+  padding: 10px;
+  border-radius: 8px;
+  background: #f7f4f5;
+}
+
+.spec-item small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.spec-item strong { font-size: 12px; }
+
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 18px;
+  border-radius: 7px;
+  background: #187b4b;
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.whatsapp-button:hover { background: #12663d; }
+
+.about-band {
+  padding: 55px 20px;
+  background: #171518;
+  color: white;
+}
+
+.about-inner {
+  width: min(1160px, 100%);
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  align-items: center;
+  gap: 35px;
+}
+
+.about-title h2 { font-size: clamp(26px, 3vw, 36px); }
+
+.about-item { display: flex; align-items: start; gap: 14px; }
+
+.about-icon {
+  display: grid;
+  place-items: center;
+  width: 43px;
+  height: 43px;
+  flex: 0 0 43px;
+  border: 1px solid #a33b59;
+  border-radius: 50%;
+  color: #df6485;
+  font-size: 21px;
+}
+
+.about-item h3 { margin: 0 0 5px; font-size: 14px; }
+.about-item p { margin: 0; color: #c5bdc3; font-size: 12px; }
+
+.contact-banner {
+  width: min(1160px, calc(100% - 40px));
+  margin: 60px auto;
+  padding: clamp(25px, 5vw, 48px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  border-radius: 16px;
+  background: linear-gradient(115deg, #211c23, #70203a);
+  color: white;
+}
+
+.contact-banner .eyebrow { color: #f07d9d; }
+.contact-banner h2 { font-size: clamp(26px, 3vw, 36px); }
+.contact-banner p:not(.eyebrow) { color: #e0d4da; font-size: 13px; }
+
+.footer {
+  padding: 30px clamp(20px, 7vw, 110px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  background: #111012;
+  color: #e9e3e7;
+}
+
+.footer .brand-text { font-size: 19px; }
+.footer .brand-mark { font-size: 30px; }
+.footer > p { color: #bdb4bb; font-size: 11px; }
+.footer-links { display: flex; gap: 20px; font-size: 11px; }
+.footer-links a:hover { color: #e26a8b; }
+.footer > small { color: #aaa1a8; font-size: 10px; }
+
+@media (max-width: 980px) {
+  .main-nav { gap: 15px; }
+  .topbar { padding-inline: 22px; }
+  .brand-text { font-size: 21px; }
+  .car-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .about-inner { grid-template-columns: 1fr 1fr; }
+  .about-title { grid-column: 1 / -1; }
+}
+
+@media (max-width: 680px) {
+  .topbar { flex-wrap: wrap; gap: 14px; }
+  .brand-mark { font-size: 31px; }
+  .brand-text { font-size: 19px; }
+  .main-nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 11px;
+  }
+  .top-contact { padding: 9px 11px; font-size: 10px; }
+  .hero { min-height: 455px; background-position: 58% center; }
+  .hero-content { padding: 52px 0 62px; margin-left: 22px; }
+  .hero h1 { font-size: clamp(36px, 10vw, 51px); }
+  .hero-description { font-size: 13px; }
+  .hero-caption { right: 20px; font-size: 8px; }
+  .search-panel {
+    grid-template-columns: 1fr 1fr;
+    width: calc(100% - 24px);
+    padding: 10px;
+    margin-top: -22px;
+  }
+  .search-field { grid-column: 1 / -1; }
+  .section-wrap { width: calc(100% - 28px); }
+  .catalogue { padding-top: 45px; padding-bottom: 48px; }
+  .section-heading { align-items: start; }
+  .section-heading h2 { font-size: 30px; }
+  .result-count { font-size: 10px; }
+  .car-grid { gap: 12px; }
+  .car-card { border-radius: 11px; }
+  .car-info { padding: 12px 10px; }
+  .car-info h3 { font-size: 14px; }
+  .car-price { font-size: 14px; }
+  .car-specs { gap: 6px; font-size: 9px; }
+  .card-button { font-size: 10px; padding: 10px 5px; }
+  .details-content { grid-template-columns: 1fr; padding: 14px; gap: 18px; }
+  .details-info h3 { font-size: 28px; }
+  .about-inner { grid-template-columns: 1fr; gap: 25px; }
+  .about-title { grid-column: auto; }
+  .contact-banner { flex-direction: column; align-items: start; margin: 35px auto; }
+  .footer { justify-content: center; text-align: center; }
+  .footer .brand { width: 100%; justify-content: center; }
+  .footer-links { justify-content: center; width: 100%; }
+}
+
+@media (max-width: 370px) {
+  .car-grid { grid-template-columns: 1fr; }
+  .car-image-wrap { aspect-ratio: 1.6 / 1; }
+  .search-panel { grid-template-columns: 1fr; }
+  .search-field { grid-column: auto; }
+}
+
+/* ===== AMELIORATION MOBILE CROWN MOTORS ===== */
+
+@media (max-width: 680px) {
+
+  /* En-tête plus compact */
+  .topbar {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .brand {
+    min-width: 0;
+  }
+
+  .brand-text {
+    font-size: 17px;
+    letter-spacing: 2px;
+  }
+
+  .brand-text small {
+    font-size: 7px;
+    letter-spacing: 3px;
+  }
+
+  .main-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 12px;
+  }
+
+  /* Bannière d'accueil */
+  .hero {
+    min-height: 410px;
+    background-position: 60% center;
+  }
+
+  .hero-content {
+    width: auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 45px 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 8vw, 43px);
+    overflow-wrap: anywhere;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .hero-points {
+    gap: 10px 16px;
+  }
+
+  .hero-caption {
+    letter-spacing: 1px;
+  }
+
+  /* Recherche et filtres */
+  .search-panel {
+    grid-template-columns: minmax(0, 1fr);
+    width: calc(100% - 28px);
+    gap: 10px;
+  }
+
+  .search-field,
+  .filter-field {
+    min-height: 48px;
+    grid-column: auto;
+  }
+
+  .search-field input,
+  .filter-field select {
+    font-size: 16px;
+  }
+
+  /* Titres */
+  .section-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(27px, 7vw, 34px);
+  }
+
+  .result-count {
+    white-space: normal;
+  }
+
+  /* Cartes de voitures */
+  .car-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .car-card {
+    width: 100%;
+  }
+
+  .car-image-wrap {
+    aspect-ratio: 16 / 10;
+  }
+
+  .car-info {
+    padding: 16px;
+  }
+
+  .car-info h3 {
+    font-size: 19px;
+  }
+
+  .car-price {
+    font-size: 17px;
+  }
+
+  .car-specs {
+    font-size: 12px;
+    gap: 8px 14px;
+  }
+
+  .card-button {
+    min-height: 44px;
+    font-size: 13px;
+  }
+
+  /* Détails d'une voiture */
+  .details-content {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 12px;
+    gap: 18px;
+  }
+
+  .details-main-image {
+    aspect-ratio: 4 / 3;
+  }
+
+  .thumbnail-button {
+    width: 64px;
+    height: 50px;
+  }
+
+  .details-info h3 {
+    font-size: 27px;
+    overflow-wrap: anywhere;
+  }
+
+  .details-price {
+    font-size: 21px;
+  }
+
+  .specs-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .whatsapp-button {
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    text-align: center;
+  }
+
+  /* Présentation et contact */
+  .about-band {
+    padding: 40px 20px;
+  }
+
+  .about-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contact-banner {
+    width: calc(100% - 28px);
+    padding: 24px 18px;
+    gap: 12px;
+  }
+
+  .contact-banner .primary-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Pied de page */
+  .footer {
+    padding: 28px 16px;
+    gap: 16px;
+  }
+
+  .footer-links {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+}
+
+/* Très petits écrans */
+@media (max-width: 370px) {
+  .brand-text {
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+
+  .top-contact {
+    white-space: normal;
+    text-align: center;
+  }
+
+  .specs-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Eviter les debordements horizontaux */
+img {
+  max-width: 100%;
+}
+
 </style>
 </head>
 <body>
