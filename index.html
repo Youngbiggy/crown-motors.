@@ -99,6 +99,13 @@
     .compare-table img{width:130px;height:90px;object-fit:cover;border-radius:8px}.compare-help{font-size:12px;color:var(--muted)}
     .lightbox{position:fixed;inset:0;z-index:1100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(10,8,10,.92)}.lightbox.open{display:flex}.lightbox img{max-width:95vw;max-height:88vh;object-fit:contain}.lightbox-close{position:absolute;top:15px;right:18px;border:1px solid rgba(255,255,255,.4);border-radius:50%;width:44px;height:44px;background:#211c23;color:#fff;font-size:25px}
     .toast{position:fixed;bottom:20px;left:50%;z-index:1200;transform:translate(-50%,20px);opacity:0;pointer-events:none;max-width:calc(100% - 30px);padding:12px 18px;border-radius:10px;background:#171518;color:white;font-size:13px;box-shadow:var(--shadow);transition:.25s}.toast.show{opacity:1;transform:translate(-50%,0)}
+
+    .ai-advisor{margin-top:22px;padding:20px;border:1px solid rgba(201,168,91,.55);border-radius:14px;background:linear-gradient(135deg,#f8f5f0,#edf3ef)}
+    .ai-advisor h3{margin:0 0 7px;color:#17382e;font-family:Georgia,serif;font-size:23px}.ai-advisor p{font-size:13px;line-height:1.6;color:#514b48}
+    .ai-form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}.ai-field label{display:block;margin-bottom:6px;font-size:12px;font-weight:800;color:#302b2b}.ai-field select{width:100%;min-height:44px;padding:10px;border:1px solid #d9d0c5;border-radius:8px;background:#fff;color:#242020;font:inherit;font-size:13px}
+    .ai-submit{border:0;border-radius:8px;background:#17382e;color:#fff;padding:12px 17px;font-weight:800;cursor:pointer}.ai-result{margin-top:16px;padding:16px;border-left:4px solid #b18a45;border-radius:8px;background:#fff}.ai-result h4{margin:0 0 8px;color:#17382e;font-size:17px}.ai-result ul{padding-left:20px;font-size:13px;line-height:1.6}.ai-wa{display:inline-block;margin-top:8px;padding:11px 15px;border-radius:8px;background:#187b4b;color:white;font-weight:800;font-size:12px}
+    @media(max-width:680px){.ai-advisor{padding:15px}.ai-form-grid{grid-template-columns:1fr}}
+
     [hidden]{display:none!important}
     /* Identité CROWN MOTORS : noir, bordeaux, vert forêt et or */
     .topbar{border-bottom-color:rgba(201,168,91,.3)}
@@ -165,8 +172,7 @@
       <div class="car-grid" id="carList"></div>
       <div class="empty-message" id="emptyMessage" hidden><span>⌕</span><h3>Aucun véhicule trouvé</h3><p>Modifiez la recherche ou les filtres, puis réessayez.</p><button class="tool-button" id="resetFiltersButton" type="button">Réinitialiser les filtres</button></div>
     </section>
-
-    <section class="details-section section-wrap" id="details">
+ <section class="details-section section-wrap" id="details">
       <div class="section-heading"><div><p class="eyebrow">EN SAVOIR PLUS</p><h2>Détails du <span>véhicule</span></h2></div></div>
       <div id="carDetails" class="details-panel"><div class="details-placeholder"><span>♛</span><h3>Choisissez votre prochaine voiture</h3><p>Sélectionnez un véhicule dans le catalogue pour consulter ses détails et ses photos.</p></div></div>
     </section>
@@ -456,8 +462,62 @@
         ["Boîte", car => escapeHTML(car.transmission)],
         ["Couleur", car => escapeHTML(car.color)]
       ];
-      compareContent.innerHTML = `<div class="compare-table-wrap"><table class="compare-table"><tbody>${rows.map(([label,render]) => `<tr><th scope="row">${label}</th>${selected.map(car => `<td>${render(car)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+      compareContent.innerHTML = `<div class="compare-table-wrap"><table class="compare-table"><tbody>${rows.map(([label,render]) => `<tr><th scope="row">${label}</th>${selected.map(car => `<td>${render(car)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
+        <section class="ai-advisor" aria-labelledby="advisorTitle">
+          <p class="eyebrow">ASSISTANT CROWN MOTORS</p><h3 id="advisorTitle">Quel véhicule vous convient le mieux ?</h3>
+          <p>Répondez à ces trois questions. Notre assistant de recommandation compare les véhicules sélectionnés et vous donne un conseil adapté à vos priorités. Le conseil est automatique et basé sur les informations disponibles dans le catalogue.</p>
+          <form id="advisorForm">
+            <div class="ai-form-grid">
+              <div class="ai-field"><label for="advisorBudget">Votre budget maximum</label><select id="advisorBudget" name="budget"><option value="any">Je veux comparer tous les prix</option><option value="3000000">3 000 000 FCFA</option><option value="5000000">5 000 000 FCFA</option><option value="6000000">6 000 000 FCFA</option><option value="7000000">7 000 000 FCFA</option><option value="8000000">8 000 000 FCFA</option></select></div>
+              <div class="ai-field"><label for="advisorUse">Votre utilisation principale</label><select id="advisorUse" name="usage"><option value="daily">Déplacements quotidiens / ville</option><option value="family">Famille et confort</option><option value="road">Longs trajets / route</option><option value="style">Style et plaisir de conduite</option></select></div>
+              <div class="ai-field"><label for="advisorPriority">Votre priorité</label><select id="advisorPriority" name="priority"><option value="budget">Prix le plus accessible</option><option value="comfort">Confort et berline</option><option value="space">Espace / SUV</option><option value="year">Année du véhicule la plus récente</option></select></div>
+            </div>
+            <button class="ai-submit" type="submit">✦ Obtenir mon conseil personnalisé</button>
+          </form><div id="advisorResult" aria-live="polite"></div>
+        </section>`;
     }
+
+    compareContent.addEventListener("submit", (event) => {
+      if (event.target.id !== "advisorForm") return;
+      event.preventDefault();
+      const selected = cars.filter((car) => compareIds.has(car.id));
+      if (selected.length < 2) return;
+      const budgetValue = $("#advisorBudget").value;
+      const budget = budgetValue === "any" ? Infinity : Number(budgetValue);
+      const usage = $("#advisorUse").value;
+      const priority = $("#advisorPriority").value;
+      const affordable = selected.filter(car => car.price <= budget);
+      const pool = affordable.length ? affordable : selected;
+      const score = (car) => {
+        let points = 0;
+        if (budget !== Infinity && car.price <= budget) points += 5;
+        if (priority === "budget") points += (1 - car.price / Math.max(...pool.map(c => c.price))) * 4;
+        if (priority === "comfort" && car.category.toLowerCase().includes("berline")) points += 4;
+        if (priority === "space" && car.category.toLowerCase().includes("suv")) points += 5;
+        if (priority === "year") points += (car.year - Math.min(...pool.map(c => c.year))) / Math.max(1, Math.max(...pool.map(c => c.year)) - Math.min(...pool.map(c => c.year))) * 4;
+        if (usage === "family" && car.category.toLowerCase().includes("berline")) points += 2;
+        if (usage === "road" && car.category.toLowerCase().includes("berline")) points += 2;
+        if (usage === "style" && ["automatique"].includes(car.transmission.toLowerCase())) points += 1;
+        if (usage === "daily" && car.price <= 5000000) points += 2;
+        return points;
+      };
+      const ranked = [...pool].sort((a,b) => score(b)-score(a) || a.price-b.price);
+      const best = ranked[0];
+      const reasons = [];
+      if (budget !== Infinity && best.price <= budget) reasons.push(`Son prix de ${formatPrice(best.price)} respecte votre budget choisi.`);
+      else if (budget !== Infinity) reasons.push(`Aucun véhicule sélectionné ne respecte votre budget de ${formatPrice(budget)} ; ${best.name} est la proposition la plus adaptée parmi les véhicules comparés.`);
+      if (priority === "budget") reasons.push("Votre priorité étant le prix, nous avons favorisé le véhicule le plus accessible.");
+      if (priority === "comfort") reasons.push(best.category.toLowerCase().includes("berline") ? "Sa catégorie berline correspond à votre préférence pour le confort." : "Comparez aussi l'espace et le confort à bord avant de décider.");
+      if (priority === "space") reasons.push(best.category.toLowerCase().includes("suv") ? "Sa catégorie SUV correspond à votre recherche d'espace." : "Parmi les voitures sélectionnées, aucun SUV n'est disponible ; vérifiez si l'espace proposé vous convient.");
+      if (priority === "year") reasons.push(`Son année (${best.year}) est prise en compte dans votre préférence pour un véhicule plus récent.`);
+      if (usage === "daily") reasons.push("Pour un usage quotidien, pensez aussi à vérifier la consommation réelle et le coût d'entretien.");
+      if (usage === "family") reasons.push("Pour un usage familial, vérifiez l'espace arrière, le coffre et les équipements de sécurité.");
+      if (usage === "road") reasons.push("Pour les longs trajets, vérifiez le confort, les pneus, les freins et l'historique d'entretien.");
+      if (usage === "style") reasons.push("Pour le style et le plaisir de conduite, faites un essai et vérifiez que la conduite vous plaît.");
+      const message = `Bonjour CROWN MOTORS, j'ai comparé ${selected.map(c=>c.name).join(", ")}. Mon profil : budget ${budget === Infinity ? "non défini" : formatPrice(budget)}, utilisation ${({daily:"quotidienne",family:"familiale",road:"longs trajets",style:"style et plaisir"})[usage]}, priorité ${({budget:"prix accessible",comfort:"confort/berline",space:"espace/SUV",year:"année récente"})[priority]}. Votre recommandation est ${best.name} (${formatPrice(best.price)}). Pouvez-vous me donner plus d'informations et organiser une visite ?`;
+      const wa = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      $("#advisorResult").innerHTML = `<div class="ai-result"><h4>Notre suggestion : ${escapeHTML(best.name)}</h4><p>Sur la base de vos réponses, ce véhicule ressort comme le meilleur compromis parmi ceux que vous avez sélectionnés.</p><ul>${reasons.map(reason => `<li>${escapeHTML(reason)}</li>`).join("")}</ul><p><strong>À retenir :</strong> cette recommandation s'appuie sur le prix, l'année et la catégorie disponibles. Elle ne remplace pas un essai ni la vérification de l'état mécanique et de l'historique du véhicule.</p><a class="ai-wa" href="${wa}" target="_blank" rel="noopener noreferrer">◉ Demander conseil sur WhatsApp</a></div>`;
+    });
 
     carList.addEventListener("click", (event) => {
       const favoriteButton = event.target.closest("[data-favorite-id]");
@@ -491,7 +551,6 @@
       }
       renderCatalogue();
     });
-
     [searchInput,categoryFilter,priceFilter,fuelFilter,sortSelect].forEach((control) => {
       control.addEventListener(control === searchInput ? "input" : "change", renderCatalogue);
     });
