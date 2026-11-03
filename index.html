@@ -56,7 +56,6 @@
     .car-card{min-width:0;overflow:hidden;background:white;border:1px solid rgba(20,16,20,.06);border-radius:var(--radius);box-shadow:0 6px 22px rgba(20,16,20,.055);transition:transform .25s,box-shadow .25s}
     .car-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
     .car-image-wrap{position:relative;overflow:hidden;aspect-ratio:1.42/1;background:#e9e5e4}
-    .sold-inline{display:inline-block;color:#ff7b9e;font-size:.72em;font-weight:900;letter-spacing:1px}.sold-notice{padding:11px 13px;border:1px solid #b31548;border-radius:9px;background:rgba(179,21,72,.13);color:#ffd6e2;font-weight:700;font-size:13px;line-height:1.5}.sold-badge{position:absolute;z-index:3;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(3,12,23,.34);color:#fff;font-size:clamp(23px,3vw,34px);font-weight:900;letter-spacing:5px;text-shadow:0 3px 12px #000;pointer-events:none}.sold-badge span{padding:10px 22px;border:2px solid #fff;border-radius:7px;background:rgba(145,15,53,.9);transform:rotate(-9deg)}
     .car-image{display:block;width:100%;height:100%;object-fit:cover;transition:transform .45s}.car-card:hover .car-image{transform:scale(1.035)}
     .car-category{position:absolute;top:12px;left:12px;padding:5px 11px;border-radius:30px;background:rgba(18,16,18,.9);color:white;font-size:10px;font-weight:700}
     .favorite-button{position:absolute;top:10px;right:10px;width:38px;height:38px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.65);border-radius:50%;background:rgba(20,18,20,.72);color:white;font-size:20px;line-height:1}
@@ -76,7 +75,7 @@
     .details-main-wrap{position:relative}.details-main-image{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;border-radius:12px;background:#f1eeee;cursor:zoom-in}
     .gallery-controls{display:flex;justify-content:space-between;gap:8px;margin-top:8px}.gallery-controls button{padding:7px 12px;border:1px solid var(--line);border-radius:7px;background:#fff;font-size:12px}
     .thumbnail-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
- .thumbnail-button{width:68px;height:52px;padding:0;overflow:hidden;border:2px solid transparent;border-radius:7px;background:#eee}.thumbnail-button.active{border-color:var(--burgundy)}
+    .thumbnail-button{width:68px;height:52px;padding:0;overflow:hidden;border:2px solid transparent;border-radius:7px;background:#eee}.thumbnail-button.active{border-color:var(--burgundy)}
     .thumbnail-button img{width:100%;height:100%;object-fit:cover}.thumbnail-image{display:block}
     .details-info h3{margin:4px 0 8px;font-family:Georgia,serif;font-size:clamp(25px,3vw,34px);line-height:1.2}
     .details-price{margin:0 0 16px;color:var(--burgundy);font-size:24px;font-weight:800}.details-description{color:#625c63;font-size:13px}
@@ -105,7 +104,7 @@
     .ai-advisor h3{margin:0 0 7px;color:#17382e;font-family:Georgia,serif;font-size:23px}.ai-advisor p{font-size:13px;line-height:1.6;color:#514b48}
     .ai-form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}.ai-field label{display:block;margin-bottom:6px;font-size:12px;font-weight:800;color:#302b2b}.ai-field select{width:100%;min-height:44px;padding:10px;border:1px solid #d9d0c5;border-radius:8px;background:#fff;color:#242020;font:inherit;font-size:13px}
     .ai-submit{border:0;border-radius:8px;background:#17382e;color:#fff;padding:12px 17px;font-weight:800;cursor:pointer}.ai-result{margin-top:16px;padding:16px;border-left:4px solid #b18a45;border-radius:8px;background:#fff}.ai-result h4{margin:0 0 8px;color:#17382e;font-size:17px}.ai-result ul{padding-left:20px;font-size:13px;line-height:1.6}.ai-wa{display:inline-block;margin-top:8px;padding:11px 15px;border-radius:8px;background:#187b4b;color:white;font-weight:800;font-size:12px}
-    @media(max-width:680px){.ai-advisor{padding:15px}.ai-form-grid{grid-template-columns:1fr}}
+       @media(max-width:680px){.ai-advisor{padding:15px}.ai-form-grid{grid-template-columns:1fr}}
 
     [hidden]{display:none!important}
     /* Identité CROWN MOTORS : noir, bordeaux, vert forêt et or */
@@ -150,7 +149,7 @@
     .catalogue-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(270px,318px);gap:20px;align-items:start}.catalogue-main{min-width:0}.catalogue-tools{margin-bottom:14px}
     .tool-button,.sort-select{background:#0b2038;color:#eaf5ff;border-color:#1b4a70}.tool-button:hover,.tool-button.active{border-color:#42b9ff;color:#65c6ff}.compare-note{color:#9fb5ca}
     .car-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.car-card{background:#071a2d;border:1px solid #174a70;box-shadow:0 8px 20px rgba(0,0,0,.22)}.car-card:hover{border-color:#28aaff;box-shadow:0 12px 26px rgba(0,116,214,.15)}.car-image-wrap{background:#0b2740}.car-category{background:rgba(3,15,28,.9);border:1px solid rgba(70,187,255,.5)}.favorite-button{border-color:#3185b8;background:rgba(4,20,37,.88)}.favorite-button.is-favorite{background:#b31548;color:#fff}
-    .car-info{padding:12px}.car-info h3{font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#f3f8ff}.car-price,.details-price{color:#ff6d9a}.car-specs{color:#a9c1d7;font-size:10px;gap:7px 9px}.card-button{background:linear-gradient(135deg,#b31548,#861031);border:1px solid #d13d68}.card-button:hover{background:#c21b50}.compare-check{background:#0c2540;border-color:#24577e;color:#cce2f5}.image-placeholder{background:linear-gradient(135deg,#071a2d,#123c5c)}
+    .sold-badge{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-12deg);padding:10px 24px;border:2px solid #fff;background:rgba(160,15,52,.94);color:#fff;font-weight:900;letter-spacing:3px;font-size:18px;box-shadow:0 5px 22px rgba(0,0,0,.45);z-index:2;pointer-events:none}.sold-detail{display:inline-block;margin:4px 0;padding:5px 12px;border-radius:5px;background:#a91443;color:#fff;font-size:12px;font-weight:900;letter-spacing:2px}.compare-check input:disabled{cursor:not-allowed}.car-info{padding:12px}.car-info h3{font-family:Arial,Helvetica,sans-serif;font-size:15px;color:#f3f8ff}.car-price,.details-price{color:#ff6d9a}.car-specs{color:#a9c1d7;font-size:10px;gap:7px 9px}.card-button{background:linear-gradient(135deg,#b31548,#861031);border:1px solid #d13d68}.card-button:hover{background:#c21b50}.compare-check{background:#0c2540;border-color:#24577e;color:#cce2f5}.image-placeholder{background:linear-gradient(135deg,#071a2d,#123c5c)}
     .details-panel{background:#081b2f;border-color:#17496f}.details-placeholder p,.details-description{color:#abc0d3}.details-placeholder>span{color:#53bdff}.details-main-image{background:#0c2540}.gallery-controls button,.thumbnail-button{background:#0b2038;border-color:#1c4a6e;color:#d8eafa}.thumbnail-button.active{border-color:#49baff}.details-info h3{color:#f5f9ff}.spec-item{background:#0d2843;color:#f3f8ff}.spec-item small{color:#a4bdd2}
     .about-band{background:#071a2d;border-block:1px solid #173f60}.about-item h3,.about-item p{color:#e5f2fc}.about-icon{color:#53bdff}.contact-banner{background:linear-gradient(120deg,#0c2944,#08172a);border:1px solid #1b6da1}.contact-banner p:not(.eyebrow){color:#b8cde0}.footer{background:#030d19;border-top:1px solid #d8b45d;color:#c3d7e8}.footer-links a:hover{color:#56c0ff}
     .ai-sidebar{position:sticky;top:14px;padding:17px 15px;border:1px solid #168fe0;border-radius:15px;background:linear-gradient(160deg,#071e35,#061321 75%);box-shadow:0 12px 30px rgba(0,0,0,.3);color:#eef7ff}.ai-heading{display:flex;align-items:center;gap:10px;margin-bottom:13px}.ai-avatar{width:42px;height:42px;flex:0 0 42px;display:grid;place-items:center;border-radius:50%;border:1px solid #39aaff;background:#0d3153;color:#60c8ff;font-size:24px;box-shadow:0 0 20px rgba(29,157,255,.13)}.ai-heading h3{margin:0;color:#57c2ff;font-size:20px;line-height:1.2}.ai-heading p{margin:2px 0 0;color:#b9d7ee;font-size:11px;font-weight:700}.ai-intro{font-size:12px;line-height:1.5;color:#d3e5f5;margin:0 0 13px}.ai-form{display:grid;gap:12px}.ai-question{display:grid;grid-template-columns:35px minmax(0,1fr);gap:10px;align-items:start}.ai-number{width:32px;height:32px;display:grid;place-items:center;border:1px solid #39adf5;border-radius:50%;color:#67c8ff;font-weight:800;font-size:14px}.ai-question-text{display:grid;gap:3px;min-width:0}.ai-question-text strong{font-size:12px;color:#f3f8ff}.ai-question-text small{font-size:10px;color:#b6ccdf;line-height:1.35}.ai-question select{width:100%;min-width:0;margin-top:4px;padding:8px 7px;border-radius:7px;border:1px solid #1a527c;background:#0a2540;color:#eaf6ff;font-size:11px}.ai-submit{width:100%;padding:11px 10px;border:0;border-radius:24px;background:linear-gradient(100deg,#1d9de8,#55baff);color:#03182b;font-size:11px;font-weight:900;box-shadow:0 6px 15px rgba(0,132,255,.15)}.ai-submit:hover{filter:brightness(1.08)}.ai-result-box{margin-top:13px;padding:12px;border:1px solid #d8b45d;border-radius:11px;background:linear-gradient(145deg,#10253a,#0a1929)}.ai-result-title{color:#f2cb65;font-size:13px}.ai-result-box p{margin:8px 0 0;font-size:11px;line-height:1.5;color:#d3e5f5}.ai-result-box ul{margin:8px 0;padding-left:18px;color:#d3e5f5;font-size:11px}.ai-wa{display:flex;align-items:center;justify-content:center;margin-top:10px;padding:10px 12px;border-radius:22px;background:linear-gradient(100deg,#e8c56d,#f7dc91);color:#172235;font-weight:900;font-size:11px;text-align:center}.ai-wa:hover{filter:brightness(1.05)}
@@ -190,7 +189,7 @@
     </section>
 
     <section class="catalogue section-wrap" id="catalogue">
-      <div class="section-heading"><div><p class="eyebrow">NOTRE SÉLECTION</p><h2>Nos véhicules <span>en vente</span></h2><p class="section-subtitle">Choisissez, comparez et trouvez votre prochaine voiture.</p></div><p class="result-count" id="resultCount" aria-live="polite">6 véhicules</p></div>
+      <div class="section-heading"><div><p class="eyebrow">NOTRE SÉLECTION</p><h2>Notre <span>catalogue automobile</span></h2><p class="section-subtitle">8 véhicules au catalogue : 6 disponibles et 2 déjà vendus. Les véhicules vendus restent visibles avec leur mention VENDU, mais ne sont pas proposés à la comparaison ni aux recommandations.</p></div><p class="result-count" id="resultCount" aria-live="polite">8 véhicules au catalogue</p></div>
       <div class="catalogue-layout">
         <div class="catalogue-main">
           <div class="catalogue-tools">
@@ -200,12 +199,12 @@
           <div class="car-grid" id="carList"></div>
           <div class="empty-message" id="emptyMessage" hidden><span>⌕</span><h3>Aucun véhicule trouvé</h3><p>Modifiez la recherche ou les filtres, puis réessayez.</p><button class="tool-button" id="resetFiltersButton" type="button">Réinitialiser les filtres</button></div>
         </div>
-        <aside class="ai-sidebar" id="assistantIA" aria-labelledby="assistantTitle">
+           <aside class="ai-sidebar" id="assistantIA" aria-labelledby="assistantTitle">
           <div class="ai-heading"><span class="ai-avatar" aria-hidden="true">✦</span><div><h3 id="assistantTitle">Assistant IA</h3><p>Recommandation personnalisée</p></div></div>
           <p class="ai-intro">Trouvez la voiture idéale pour vous ! Répondez à quelques questions et recevez un conseil adapté à vos besoins.</p>
           <form id="aiAdvisorForm" class="ai-form">
             <label class="ai-question"><span class="ai-number">1</span><span class="ai-question-text"><strong>Votre budget</strong><small>Quel est votre budget maximum ?</small><select id="aiBudget"><option value="any">Tous les budgets</option><option value="3000000">Jusqu'à 3 000 000 FCFA</option><option value="5000000">Jusqu'à 5 000 000 FCFA</option><option value="6000000">Jusqu'à 6 000 000 FCFA</option><option value="7000000">Jusqu'à 7 000 000 FCFA</option><option value="8000000">Jusqu'à 8 000 000 FCFA</option></select></span></label>
-  <label class="ai-question"><span class="ai-number">2</span><span class="ai-question-text"><strong>Votre utilisation</strong><small>Quel est l'usage principal du véhicule ?</small><select id="aiUsage"><option value="daily">Déplacements quotidiens / ville</option><option value="family">Famille et confort</option><option value="sport">Style sportif</option><option value="space">SUV et position surélevée</option></select></span></label>
+            <label class="ai-question"><span class="ai-number">2</span><span class="ai-question-text"><strong>Votre utilisation</strong><small>Quel est l'usage principal du véhicule ?</small><select id="aiUsage"><option value="daily">Déplacements quotidiens / ville</option><option value="family">Famille et confort</option><option value="sport">Style sportif</option><option value="space">SUV et position surélevée</option></select></span></label>
             <label class="ai-question"><span class="ai-number">3</span><span class="ai-question-text"><strong>Vos priorités</strong><small>Qu'est-ce qui compte le plus pour vous ?</small><select id="aiPriority"><option value="budget">Prix accessible</option><option value="year">Année plus récente</option><option value="comfort">Confort et berline</option><option value="type">Type de véhicule</option></select></span></label>
             <button class="ai-submit" type="submit">✦ Obtenir ma recommandation</button>
           </form>
@@ -252,7 +251,7 @@
         ]
       },
       {
-        id:"hyundai-sonata-2016", name:"Hyundai Sonata 2016", make:"Hyundai", year:2016, price:7000000,
+        id:"hyundai-sonata-2016", name:"Hyundai Sonata 2016", make:"Hyundai", year:2016, price:7000000, status:"sold",
         category:"Berline", fuel:"Essence", transmission:"Automatique", color:"Gris",
         description:"Berline élégante et confortable, avec une ligne soignée. Contactez-nous pour plus de détails.",
         images:[
@@ -269,7 +268,7 @@
         images:["https://i.postimg.cc/63f33kz5/IMG-1470.png"]
       },
       {
-        id:"hyundai-veloster-2013", name:"Hyundai Veloster 2013", make:"Hyundai", year:2013, price:2800000, sold:true,
+        id:"hyundai-veloster-2013", name:"Hyundai Veloster 2013", make:"Hyundai", year:2013, price:2800000, status:"sold",
         category:"Coupé", fuel:"Essence", transmission:"Automatique", color:"Gris",
         description:"Veloster au design sportif, avec un style moderne et un intérieur confortable.",
         images:[
@@ -302,6 +301,18 @@
           "https://i.postimg.cc/NF15ykgq/b7e0cc78-f90e-4eca-85b4-dd17a3486488.jpg",
           "https://i.postimg.cc/D0q8WP23/ca146669-80c1-4503-94bd-50f3d7375694.jpg"
         ]
+      },
+      {
+        id:"dodge-challenger-2019", name:"Dodge Challenger 2019", make:"Dodge", year:2019, price:15000000,
+        category:"Coupé", fuel:"Essence", transmission:"Automatique", color:"À confirmer",
+        description:"DODGE Challenger 2019. Boîte automatique. Contactez CROWN MOTORS pour obtenir les détails complémentaires.",
+        images:[""] // Photo à ajouter dès que le lien Postimages sera disponible.
+      },
+      {
+        id:"bmw-e90-2012", name:"BMW Série 3 E90 2012", make:"BMW", year:2012, price:2650000,
+        category:"Berline", fuel:"À confirmer", transmission:"Manuelle", color:"À confirmer",
+        description:"BMW Série 3 E90 2012. Boîte manuelle. Contactez CROWN MOTORS pour obtenir les détails complémentaires.",
+        images:[""] // Photo à ajouter dès que le lien Postimages sera disponible.
       }
     ];
 
@@ -341,6 +352,7 @@
     }
 
     function imageMarkup(url, carName, className = "car-image") {
+      if (!url) return `<div class="image-placeholder">♛<br>Ajoutez la photo<br>${escapeHTML(carName)}</div>`;
       return `<img class="${className}" src="${escapeHTML(url)}" alt="${escapeHTML(carName)}" loading="lazy" onerror="this.onerror=null;this.style.display='none';if(this.nextElementSibling)this.nextElementSibling.hidden=false;"><div class="image-placeholder" hidden>♛<br>Photo indisponible<br>${escapeHTML(carName)}</div>`;
     }
 
@@ -384,8 +396,8 @@
         <article class="car-card">
           <div class="car-image-wrap">
             ${imageMarkup(car.images[0], car.name)}
-            ${car.sold ? '<div class="sold-badge"><span>VENDU</span></div>' : ""}
             <span class="car-category">${escapeHTML(car.category)}</span>
+            ${car.status === "sold" ? '<span class="sold-badge">VENDU</span>' : ''}
             <button type="button" class="favorite-button ${favoriteIds.has(car.id) ? "is-favorite" : ""}" data-favorite-id="${car.id}" aria-label="${favoriteIds.has(car.id) ? "Retirer des favoris" : "Ajouter aux favoris"}" aria-pressed="${favoriteIds.has(car.id)}">${favoriteIds.has(car.id) ? "♥" : "♡"}</button>
           </div>
           <div class="car-info">
@@ -394,7 +406,7 @@
             <div class="car-specs"><span>▣ ${escapeHTML(car.category)}</span><span>⚙ ${escapeHTML(car.transmission)}</span><span>◉ ${escapeHTML(car.fuel)}</span><span>▦ ${car.year}</span></div>
             <div class="card-actions">
               <button class="card-button" type="button" data-car-id="${car.id}">Voir les détails →</button>
-              <label class="compare-check"><input type="checkbox" data-compare-id="${car.id}" ${compareIds.has(car.id) ? "checked" : ""} aria-label="Comparer ${escapeHTML(car.name)}"> Comparer</label>
+              <label class="compare-check"><input type="checkbox" data-compare-id="${car.id}" ${compareIds.has(car.id) ? "checked" : ""} ${car.status === "sold" ? "disabled" : ""} aria-label="Comparer ${escapeHTML(car.name)}"> ${car.status === "sold" ? "Vendu" : "Comparer"}</label>
             </div>
           </div>
         </article>
@@ -428,8 +440,7 @@
           </div>
           <div class="details-info">
             <p class="eyebrow">${escapeHTML(car.category)} · ${car.year}</p>
-            <h3>${escapeHTML(car.name)} ${car.sold ? '<span class="sold-inline">— VENDU</span>' : ""}</h3><p class="details-price">${formatPrice(car.price)}</p>
-            ${car.sold ? '<p class="sold-notice">Ce véhicule a été vendu. Consultez nos autres modèles ou contactez-nous pour trouver un véhicule similaire.</p>' : ""}
+            <h3>${escapeHTML(car.name)}</h3>${car.status === "sold" ? '<p class="sold-detail">VÉHICULE VENDU</p>' : ''}<p class="details-price">${formatPrice(car.price)}</p>
             <p class="details-description">${escapeHTML(car.description)}</p>
             <div class="specs-list">
               <div class="spec-item"><small>Marque</small><strong>${escapeHTML(car.make)}</strong></div>
@@ -440,7 +451,7 @@
               <div class="spec-item"><small>Catégorie</small><strong>${escapeHTML(car.category)}</strong></div>
               ${extraSpecs}
             </div>
-            <a class="whatsapp-button" href="${car.sold ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Bonjour CROWN MOTORS, j’ai vu que la " + car.name + " est vendue. Pouvez-vous me proposer un véhicule similaire ?")}` : getWhatsAppLink(car)}" target="_blank" rel="noopener noreferrer">◉ ${car.sold ? "Trouver un véhicule similaire sur WhatsApp" : "Contacter sur WhatsApp"}</a>
+            <a class="whatsapp-button" href="${car.status === "sold" ? `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Bonjour CROWN MOTORS, j'ai vu la ${car.name} marquée vendue. Avez-vous un véhicule similaire disponible ?`)}` : getWhatsAppLink(car)}" target="_blank" rel="noopener noreferrer">◉ ${car.status === "sold" ? "Demander un véhicule similaire" : "Contacter sur WhatsApp"}</a>
             <button class="share-button" type="button" id="shareCarButton">↗ Partager ce véhicule</button>
           </div>
         </div>`;
@@ -491,7 +502,7 @@
     }
 
     function renderComparison() {
-      const selected = cars.filter((car) => compareIds.has(car.id));
+      const selected = cars.filter((car) => compareIds.has(car.id) && car.status !== "sold");
       if (selected.length < 2) {
         compareContent.innerHTML = `<p>Choisissez au moins 2 véhicules à comparer (3 maximum) dans le catalogue.</p>`;
         return;
@@ -524,7 +535,7 @@
     compareContent.addEventListener("submit", (event) => {
       if (event.target.id !== "advisorForm") return;
       event.preventDefault();
-      const selected = cars.filter((car) => compareIds.has(car.id));
+      const selected = cars.filter((car) => compareIds.has(car.id) && car.status !== "sold");
       if (selected.length < 2) return;
       const budgetValue = $("#advisorBudget").value;
       const budget = budgetValue === "any" ? Infinity : Number(budgetValue);
@@ -572,7 +583,7 @@
         showToast(favoriteIds.has(id) ? "Véhicule ajouté aux favoris." : "Véhicule retiré des favoris.");
         return;
       }
- const detailsButton = event.target.closest("[data-car-id]");
+      const detailsButton = event.target.closest("[data-car-id]");
       if (detailsButton) {
         renderDetails(detailsButton.dataset.carId);
         $("#details").scrollIntoView({behavior:"smooth",block:"start"});
@@ -582,6 +593,7 @@
     carList.addEventListener("change", (event) => {
       const checkbox = event.target.closest("[data-compare-id]");
       if (!checkbox) return;
+      if (checkbox.disabled) return;
       const id = checkbox.dataset.compareId;
       if (checkbox.checked) {
         if (compareIds.size >= 3) {
@@ -654,7 +666,7 @@
     const budget = budgetValue === 'any' ? Infinity : Number(budgetValue);
     const usage = document.getElementById('aiUsage').value;
     const priority = document.getElementById('aiPriority').value;
-    const availableCars = cars.filter(car => !car.sold);
+    const availableCars = cars.filter(car => car.status !== 'sold');
     const eligible = availableCars.filter(car => car.price <= budget);
     const pool = eligible.length ? eligible : availableCars;
     const scored = pool.map(car => {
@@ -662,7 +674,7 @@
       const reasons = [];
       if (budget !== Infinity && car.price <= budget) { score += 5; reasons.push('Son prix (' + money(car.price) + ') respecte votre budget.'); }
       if (usage === 'family' && car.category === 'Berline') { score += 3; reasons.push('Sa catégorie berline peut convenir aux trajets confortables du quotidien.'); }
-      if (usage === 'sport' && /Veloster|BMW/i.test(car.name)) { score += 4;reasons.push('Son style est plus sportif.'); }
+      if (usage === 'sport' && /Veloster|BMW/i.test(car.name)) { score += 4; reasons.push('Son style est plus sportif.'); }
       if (usage === 'space' && car.category === 'SUV') { score += 5; reasons.push('Son format SUV et sa position de conduite surélevée correspondent à votre préférence.'); }
       if (usage === 'daily' && /Corolla|Optima|Sonata/i.test(car.name)) { score += 2; reasons.push('C’est une berline adaptée à envisager pour des déplacements quotidiens.'); }
       if (priority === 'budget') { score += Math.max(0, 4 - car.price / 2000000); reasons.push('Son prix est relativement accessible parmi les véhicules proposés.'); }
@@ -684,3 +696,4 @@
 
 </body>
 </html>
+        
