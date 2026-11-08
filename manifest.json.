@@ -1,0 +1,11 @@
+{
+  "name": "Crown Motors",
+  "short_name": "Crown",
+  "description": "Découvrez les véhicules disponibles chez Crown Motors.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#151416",
+  "theme_color": "#982b49",
+  "orientation": "portrait"
+}
