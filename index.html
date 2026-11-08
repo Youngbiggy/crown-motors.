@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#982b49">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Crown Motors">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#06172a">
@@ -698,6 +703,17 @@
     box.innerHTML = '<div class="ai-result-title">💡 <strong>Notre conseil personnalisé</strong></div><p><strong>' + escapeHTML(best.name) + '</strong> — ' + money(best.price) + '</p><ul>' + reasons.map(reason => '<li>' + escapeHTML(reason) + '</li>').join('') + '</ul><p>Ce conseil est indicatif et s’appuie sur les informations du catalogue. Vérifiez l’état du véhicule, son historique et vos frais d’utilisation avant de décider.</p><a class="ai-wa" href="' + wa + '" target="_blank" rel="noopener noreferrer">☏ Demander conseil sur WhatsApp</a>';
   });
 })();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .catch(error => {
+        console.error("Erreur Service Worker :", error);
+      });
+  });
+}
 </script>
 
 </body>
