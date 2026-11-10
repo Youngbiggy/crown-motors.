@@ -1,11 +1,11 @@
 {
-  "name": "Crown Motors",
-  "short_name": "Crown",
-  "description": "Découvrez les véhicules disponibles chez Crown Motors.",
+  "name": "CROWN MOTORS - Excellence Automobile",
+  "short_name": "CROWN MOTORS",
+  "description": "Découvrez notre sélection de véhicules chez CROWN MOTORS.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#151416",
-  "theme_color": "#982b49",
-  "orientation": "portrait"
+  "background_color": "#06172a",
+  "theme_color": "#06172a",
+  "orientation": "any"
 }
