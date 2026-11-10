@@ -1,7 +1,6 @@
-
 "use strict";
 
-const CACHE_NAME = "crown-motors-v4";
+const CACHE_NAME = "crown-motors-v5";
 
 const FILES_TO_CACHE = [
   "./",
@@ -12,20 +11,19 @@ const FILES_TO_CACHE = [
   "./icons/icon-512-maskable.png",
   "./icons/apple-touch-icon.png"
 ];
+
 // INSTALLATION
 self.addEventListener("install", (event) => {
   event.waitUntil(
     (async () => {
       const cache = await caches.open(CACHE_NAME);
-
       await cache.addAll(FILES_TO_CACHE);
-
       await self.skipWaiting();
     })()
   );
 });
 
-// ACTIVATION ET NETTOYAGE DES ANCIENS CACHES
+// ACTIVATION
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     (async () => {
@@ -45,7 +43,7 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// GESTION DES REQUÊTES
+// REQUÊTES
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
@@ -53,43 +51,31 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
 
-  // Ne pas intercepter les ressources externes
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
     (async () => {
       try {
-        // Réseau prioritaire
         const response = await fetch(request);
 
-        // Mettre en cache les réponses valides
         if (response && response.ok) {
-          const responseCopy = response.clone();
-
-          event.waitUntil(
-            caches.open(CACHE_NAME).then((cache) =>
-              cache.put(request, responseCopy)
-            )
-          );
+          const cache = await caches.open(CACHE_NAME);
+          await cache.put(request, response.clone());
         }
 
         return response;
 
       } catch (error) {
-        // Utiliser le cache si Internet est indisponible
         const cachedResponse = await caches.match(request);
 
         if (cachedResponse) {
           return cachedResponse;
         }
 
-        // Secours pour les pages ouvertes hors connexion
         if (request.mode === "navigate") {
           const offlinePage = await caches.match("./index.html");
 
-          if (offlinePage) {
-            return offlinePage;
-          }
+          if (offlinePage) return offlinePage;
         }
 
         return new Response(
