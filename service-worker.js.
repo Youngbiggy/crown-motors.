@@ -1,6 +1,7 @@
+
 "use strict";
 
-const CACHE_NAME = "crown-motors-v2";
+const CACHE_NAME = "crown-motors-v3";
 
 const FILES_TO_CACHE = [
   "./",
@@ -8,22 +9,26 @@ const FILES_TO_CACHE = [
   "./manifest.json"
 ];
 
-// Installation : mise en cache des fichiers essentiels
+// INSTALLATION
 self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(FILES_TO_CACHE);
-    })
-  );
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
 
-  self.skipWaiting();
+      await cache.addAll(FILES_TO_CACHE);
+
+      await self.skipWaiting();
+    })()
+  );
 });
 
-// Activation : nettoyage des anciennes versions du cache
+// ACTIVATION ET NETTOYAGE DES ANCIENS CACHES
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
+    (async () => {
+      const cacheNames = await caches.keys();
+
+      await Promise.all(
         cacheNames
           .filter((name) =>
             name.startsWith("crown-motors-") &&
@@ -31,12 +36,13 @@ self.addEventListener("activate", (event) => {
           )
           .map((name) => caches.delete(name))
       );
-    }).then(() => self.clients.claim())
+
+      await self.clients.claim();
+    })()
   );
 });
 
-// Navigation et ressources : réseau en priorité,
-// puis cache si la connexion est indisponible.
+// GESTION DES REQUÊTES
 self.addEventListener("fetch", (event) => {
   const request = event.request;
 
@@ -44,31 +50,37 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
 
-  // Ne pas intercepter les requêtes vers d'autres sites
+  // Ne pas intercepter les ressources externes
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
-    fetch(request)
-      .then((response) => {
+    (async () => {
+      try {
+        // Réseau prioritaire
+        const response = await fetch(request);
+
+        // Mettre en cache les réponses valides
         if (response && response.ok) {
           const responseCopy = response.clone();
 
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseCopy);
-          });
+          event.waitUntil(
+            caches.open(CACHE_NAME).then((cache) =>
+              cache.put(request, responseCopy)
+            )
+          );
         }
 
         return response;
-      })
-      .catch(async () => {
+
+      } catch (error) {
+        // Utiliser le cache si Internet est indisponible
         const cachedResponse = await caches.match(request);
 
         if (cachedResponse) {
           return cachedResponse;
         }
 
-        // Si une page est demandée hors connexion,
-        // afficher la page principale si elle est en cache.
+        // Secours pour les pages ouvertes hors connexion
         if (request.mode === "navigate") {
           const offlinePage = await caches.match("./index.html");
 
@@ -78,7 +90,7 @@ self.addEventListener("fetch", (event) => {
         }
 
         return new Response(
-          "Vous êtes hors connexion. Veuillez réessayer lorsque Internet sera disponible.",
+          "CROWN MOTORS : vous êtes hors connexion. Veuillez réessayer lorsque Internet sera disponible.",
           {
             status: 503,
             statusText: "Service indisponible",
@@ -87,6 +99,7 @@ self.addEventListener("fetch", (event) => {
             }
           }
         );
-      })
+      }
+    })()
   );
 });
