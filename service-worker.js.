@@ -1,4 +1,6 @@
-const CACHE_NAME = "crown-motors-v1";
+"use strict";
+
+const CACHE_NAME = "crown-motors-v2";
 
 const FILES_TO_CACHE = [
   "./",
@@ -6,6 +8,7 @@ const FILES_TO_CACHE = [
   "./manifest.json"
 ];
 
+// Installation : mise en cache des fichiers essentiels
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -16,26 +19,74 @@ self.addEventListener("install", (event) => {
   self.skipWaiting();
 });
 
+// Activation : nettoyage des anciennes versions du cache
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
-        keys
-          .filter((key) => key !== CACHE_NAME)
-          .map((key) => caches.delete(key))
-      )
-    )
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames
+          .filter((name) =>
+            name.startsWith("crown-motors-") &&
+            name !== CACHE_NAME
+          )
+          .map((name) => caches.delete(name))
+      );
+    }).then(() => self.clients.claim())
   );
-
-  self.clients.claim();
 });
 
+// Navigation et ressources : réseau en priorité,
+// puis cache si la connexion est indisponible.
 self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") return;
+  const request = event.request;
+
+  if (request.method !== "GET") return;
+
+  const url = new URL(request.url);
+
+  // Ne pas intercepter les requêtes vers d'autres sites
+  if (url.origin !== self.location.origin) return;
 
   event.respondWith(
-    fetch(event.request).catch(() =>
-      caches.match(event.request)
-    )
+    fetch(request)
+      .then((response) => {
+        if (response && response.ok) {
+          const responseCopy = response.clone();
+
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(request, responseCopy);
+          });
+        }
+
+        return response;
+      })
+      .catch(async () => {
+        const cachedResponse = await caches.match(request);
+
+        if (cachedResponse) {
+          return cachedResponse;
+        }
+
+        // Si une page est demandée hors connexion,
+        // afficher la page principale si elle est en cache.
+        if (request.mode === "navigate") {
+          const offlinePage = await caches.match("./index.html");
+
+          if (offlinePage) {
+            return offlinePage;
+          }
+        }
+
+        return new Response(
+          "Vous êtes hors connexion. Veuillez réessayer lorsque Internet sera disponible.",
+          {
+            status: 503,
+            statusText: "Service indisponible",
+            headers: {
+              "Content-Type": "text/plain; charset=utf-8"
+            }
+          }
+        );
+      })
   );
 });
